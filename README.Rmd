@@ -1,21 +1,61 @@
 ---
-output: 
-  github_document:
-    html_preview: false
+output: github_document
+
 ---
 
-```{r, echo = FALSE, message = FALSE}
-  knitr::opts_chunk$set(
-  fig.align = 'center',
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-")
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE,
+                      fig.align = 'center',
+                      collapse = TRUE)
+
+
+
+library(companycolors)
+library(ggplot2)
 ```
 
 
 **company-colors** is an R helper package for using my company's color palette in charts.
 
+### Usage
+
+#### Pull list of company colors and HEX codes
+
+```{r, size = 'tiny'}
+measure_colors()
+```
+
+#### Find HEX code from specific color
+```{r}
+measure_colors("Navy")
+```
+
+#### Get shades between two colors
+```{r}
+measure_palette("secondary", reverse = TRUE)(4)
+```
+
+
+#### Plot!
+
+```{r, fig.width=6, fig.height=4}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
+    geom_point(size = 4, alpha = 0.6) +
+    scale_color_measure(discrete = FALSE, palette = "accent", reverse = TRUE)
+```
+
+
+```{r, fig.width=6, fig.height=4}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+   geom_point(size = 4) +
+   scale_color_measure(palette = "accent", reverse = TRUE)
+ 
+```
+
+
+
+
 ### Credits
-Based off of this great @drsimonj [blog post](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)
+Based on this great @drsimonj [blog post](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)
 
 
