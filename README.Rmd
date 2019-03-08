@@ -1,0 +1,21 @@
+---
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r, echo = FALSE, message = FALSE}
+  knitr::opts_chunk$set(
+  fig.align = 'center',
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-")
+```
+
+
+**company-colors** is an R helper package for using my company's color palette in charts.
+
+### Credits
+Based off of this great @drsimonj [blog post](https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2)
+
+
