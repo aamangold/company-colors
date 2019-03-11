@@ -11,16 +11,17 @@ knitr::opts_chunk$set(error = TRUE,
 
 library(companycolors)
 library(ggplot2)
+theme_set(theme_minimal())
 ```
 
 
-**company-colors** is an R helper package for using my company's color palette in charts.
+**`companycolors`** is an R helper package for using company-specific color palettes in charts.
 
 ### Usage
 
 #### Pull list of company colors and HEX codes
 
-```{r, size = 'tiny'}
+```{r}
 measure_colors()
 ```
 
@@ -35,19 +36,27 @@ measure_palette("secondary", reverse = TRUE)(4)
 ```
 
 
+#### Preview your color palettes
+```{r, fig.width= 5, fig.height= 3}
+glimpse_colors(measure_palette("mixed")(25))
+glimpse_colors(measure_palette("accent", reverse = TRUE)(15))
+```
+
+
+
 #### Plot!
 
 ```{r, fig.width=6, fig.height=4}
 ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
     geom_point(size = 4, alpha = 0.6) +
-    scale_color_measure(discrete = FALSE, palette = "accent", reverse = TRUE)
+    scale_color_measure(discrete = FALSE, palette = "mixed", reverse = TRUE)
 ```
 
 
 ```{r, fig.width=6, fig.height=4}
 ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
    geom_point(size = 4) +
-   scale_color_measure(palette = "accent", reverse = TRUE)
+   scale_color_measure(palette = "primary", reverse = FALSE)
  
 ```
 

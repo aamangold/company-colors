@@ -8,7 +8,7 @@ scale_fill_measure(palette = "main", discrete = TRUE,
   reverse = FALSE, ...)
 }
 \arguments{
-\item{palette}{Options: main, secondary, tertiary, accent}
+\item{palette}{Options: main, primary, secondary, tertiary, accent, green, gray, dark, mixed}
 
 \item{discrete}{}
 

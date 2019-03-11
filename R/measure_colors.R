@@ -4,7 +4,6 @@
 #'
 #' @description Pulls list of Measure's corporate colors or identifies HEX code of specific color
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -39,11 +38,10 @@ measure_colors <- function(...) {
 #'
 #' @description Generates HEX codes of shades between 2 color palette
 #'
-#' @param palette Options: main, secondary, tertiary, accent
+#' @param palette Options: main, primary, secondary, tertiary, accent, green, gray, dark, mixed
 #' @param reverse 
 #' @param ... 
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -55,10 +53,15 @@ measure_colors <- function(...) {
 measure_palette <- function(palette = "main", reverse = FALSE, ...) {
     
     measure_palettes <- list(
+        `primary` = measure_colors("Lime Green", "Hunter", "Black"),
         `main` = measure_colors("Black","White"),
         `secondary` = measure_colors("Gray", "Web"),
         `tertiary` = measure_colors("Lime Green", "Navy"),
-        `accent` = measure_colors("Hunter", "Taupe")
+        `accent` = measure_colors("Hunter", "Taupe"),
+        `green` = measure_colors("Lime Green", "Hunter"),
+        `gray` = measure_colors("Gray", "Taupe"),
+        `dark` = measure_colors("Black", "Navy"),
+        `mixed` = measure_colors("Taupe", "Gray", "Lime Green", "Hunter", "Navy", "Black")
     )
     
     pal <- measure_palettes[[palette]]
@@ -74,12 +77,11 @@ measure_palette <- function(palette = "main", reverse = FALSE, ...) {
 
 #' Scale Measure Color
 #'
-#' @param palette Options: main, secondary, tertiary, accent
+#' @param palette Options: main, primary, secondary, tertiary, accent, green, gray, dark, mixed
 #' @param discrete 
 #' @param reverse 
 #' @param ... 
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -103,12 +105,11 @@ scale_color_measure <- function(palette = "main", discrete = TRUE, reverse = FAL
 
 #' Scale Measure Fill
 #'
-#' @param palette Options: main, secondary, tertiary, accent
+#' @param palette Options: main, primary, secondary, tertiary, accent, green, gray, dark, mixed
 #' @param discrete 
 #' @param reverse 
 #' @param ... 
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -128,3 +129,28 @@ scale_fill_measure <- function(palette = "main", discrete = TRUE, reverse = FALS
         scale_fill_gradientn(colors = pal(256), ...)
     }
 }
+
+
+
+
+#' Glimpse Colors
+#'
+#' @param colors_string 
+#'
+#' @export
+#'
+#' @examples
+#' glimpse_colors(measure_palette("mixed")(10))
+#' glimpse_colors(measure_palette("primary")(5))
+ 
+
+glimpse_colors <- function(colors_string) { 
+    
+    n <- length(colors_string) 
+    hist(1:n, breaks = 0:n, 
+         col = colors_string, 
+         ylab = NULL, main = NULL, xlab = NULL)
+         
+    }
+
+
