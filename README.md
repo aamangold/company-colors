@@ -37,10 +37,24 @@ glimpse_colors(measure_palette("mixed")(25))
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 ``` r
-glimpse_colors(measure_palette("accent")(25))
+glimpse_colors(measure_palette("accent", reverse = TRUE)(15))
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-2.png)
+
+#### Preview your color palettes
+
+``` r
+mixed <- measure_palette_preview()
+primary <- measure_palette_preview(palette = "primary")
+dark <- measure_palette_preview(palette = "dark")
+tertiary <- measure_palette_preview(palette = "tertiary")
+accent <- measure_palette_preview(palette = "accent", n = 15)
+green <- measure_palette_preview(palette = "green", n = 15)
+mixed + primary + dark + tertiary + accent + green + plot_layout(ncol = 2)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 #### Plot!
 
@@ -50,7 +64,7 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
     scale_color_measure(discrete = FALSE, palette = "mixed", reverse = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ``` r
 ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
@@ -58,7 +72,7 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
    scale_color_measure(palette = "primary", reverse = FALSE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ### Credits
 

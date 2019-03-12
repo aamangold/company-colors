@@ -9,8 +9,7 @@ knitr::opts_chunk$set(error = TRUE,
 
 
 
-library(companycolors)
-library(ggplot2)
+pacman::p_load(companycolors, ggplot2, patchwork)
 theme_set(theme_minimal())
 ```
 
@@ -37,10 +36,17 @@ measure_palette("secondary", reverse = TRUE)(4)
 
 
 #### Preview your color palettes
-```{r, fig.width= 5, fig.height= 3}
-glimpse_colors(measure_palette("mixed")(25))
-glimpse_colors(measure_palette("accent", reverse = TRUE)(15))
+```{r, fig.width= 8, fig.height= 3.5}
+mixed <- measure_palette_preview()
+primary <- measure_palette_preview(palette = "primary")
+dark <- measure_palette_preview(palette = "dark")
+tertiary <- measure_palette_preview(palette = "tertiary")
+accent <- measure_palette_preview(palette = "accent", n = 15)
+green <- measure_palette_preview(palette = "green", n = 15)
+mixed + primary + dark + tertiary + accent + green + plot_layout(ncol = 2)
 ```
+
+
 
 
 

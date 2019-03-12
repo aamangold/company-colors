@@ -132,25 +132,41 @@ scale_fill_measure <- function(palette = "main", discrete = TRUE, reverse = FALS
 
 
 
-
-#' Glimpse Colors
+#' Measure Palette Preview
 #'
-#' @param colors_string 
+#' @param palette Options: main, primary, secondary, tertiary, accent, green, gray, dark, mixed
+#' @param n Number of shades to be generated
 #'
 #' @export
 #'
 #' @examples
-#' glimpse_colors(measure_palette("mixed")(10))
-#' glimpse_colors(measure_palette("primary")(5))
- 
+#' measure_palette_preview()
+#' measure_palette_preview(palette = "accent", n = 15)
 
-glimpse_colors <- function(colors_string) { 
+
+measure_palette_preview <- function(palette = "mixed", n = 25) {
     
-    n <- length(colors_string) 
-    hist(1:n, breaks = 0:n, 
-         col = colors_string, 
-         ylab = NULL, main = NULL, xlab = NULL)
-         
-    }
+    a <- measure_palette(palette)(n)
+    b <- tibble::tibble(hex = a)
+    
+    ggplot2::ggplot(b, aes(1, fill = hex)) +
+        ggplot2::geom_histogram(binwidth = length(a), show.legend = FALSE) +
+        ggplot2::coord_flip() +
+        scale_fill_measure(palette = palette) +
+        theme_minimal() +
+        ggtitle(paste0(palette, " Color Palette")) +
+        theme(axis.text = element_blank(),
+              axis.title = element_blank(),
+              panel.grid = element_blank(), 
+              plot.title = element_text(hjust =0.06))
+        
+    
+}
+
+
+
+
+
+
 
 
