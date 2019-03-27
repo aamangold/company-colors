@@ -5,7 +5,10 @@ output: rmarkdown::github_document
 
 ```{r setup, include = FALSE, cache = FALSE}
 knitr::opts_chunk$set(error = TRUE,
-                      collapse = TRUE)
+                      collapse = TRUE,
+                      comment = "#>",
+                      fig.path = "man/figures/README-",
+                      out.width = "100%")
 
 
 
@@ -13,6 +16,7 @@ pacman::p_load(companycolors, ggplot2, patchwork)
 theme_set(theme_minimal())
 ```
 
+# companycolors <img src="man/figures/logo.png" align="right" height=140/>
 
 **`companycolors`** is an R helper package for using company-specific color palettes in charts.
 
@@ -36,7 +40,12 @@ measure_palette("secondary", reverse = TRUE)(4)
 
 
 #### Preview your color palettes
-```{r, fig.width= 8, fig.height= 3.5}
+```{r fig.width= 8, fig.height= 1.5}
+measure_palette_preview(palette = "mixed")
+```
+
+
+```{r, fig.width= 8, fig.height= 3.5, echo=FALSE}
 mixed <- measure_palette_preview()
 primary <- measure_palette_preview(palette = "primary")
 dark <- measure_palette_preview(palette = "dark")

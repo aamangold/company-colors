@@ -1,4 +1,7 @@
 
+companycolors <img src="man/figures/logo.png" align="right" height=140/>
+========================================================================
+
 **`companycolors`** is an R helper package for using company-specific color palettes in charts.
 
 ### Usage
@@ -7,41 +10,36 @@
 
 ``` r
 measure_colors()
-## Lime Green       Navy     Hunter      Black       Gray      Taupe 
-##  "#93d500"  "#00205c"  "#00945e"  "#1c1f2a"  "#7b868c"  "#cfd2d3" 
-##        Web      White 
-##  "#eff0f1"  "#ffffff"
+#> Lime Green       Navy     Hunter      Black       Gray      Taupe 
+#>  "#93d500"  "#00205c"  "#00945e"  "#1c1f2a"  "#7b868c"  "#cfd2d3" 
+#>        Web      White 
+#>  "#eff0f1"  "#ffffff"
 ```
 
 #### Find HEX code from specific color
 
 ``` r
 measure_colors("Navy")
-##      Navy 
-## "#00205c"
+#>      Navy 
+#> "#00205c"
 ```
 
 #### Get shades between two colors
 
 ``` r
 measure_palette("secondary", reverse = TRUE)(4)
-## [1] "#EFF0F1" "#C8CCCF" "#A1A9AD" "#7B868C"
+#> [1] "#EFF0F1" "#C8CCCF" "#A1A9AD" "#7B868C"
 ```
-
 
 #### Preview your color palettes
 
 ``` r
-mixed <- measure_palette_preview()
-primary <- measure_palette_preview(palette = "primary")
-dark <- measure_palette_preview(palette = "dark")
-tertiary <- measure_palette_preview(palette = "tertiary")
-accent <- measure_palette_preview(palette = "accent", n = 15)
-green <- measure_palette_preview(palette = "green", n = 15)
-mixed + primary + dark + tertiary + accent + green + plot_layout(ncol = 2)
+measure_palette_preview(palette = "mixed")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 #### Plot!
 
@@ -51,7 +49,7 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
     scale_color_measure(discrete = FALSE, palette = "mixed", reverse = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
 ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
@@ -59,7 +57,7 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
    scale_color_measure(palette = "primary", reverse = FALSE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ### Credits
 
